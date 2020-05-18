@@ -1,0 +1,8 @@
+
+- Pull list of clusters
+- Allow selection of cluster to "control" scheduling
+- Show screen of services
+- Allow selection of a service for scheduling off-hour shutdown
+- Slack integration per cluster
+- Logs per service shutdown
+- Cost savings per service estimation
