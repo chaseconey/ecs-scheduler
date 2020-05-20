@@ -2,6 +2,8 @@
 
 return [
 
+    'configured_regions' => ['us-west-2', 'us-east-1'],
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -174,6 +176,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\EcsClientProvider::class,
 
     ],
 

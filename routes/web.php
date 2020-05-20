@@ -1,5 +1,6 @@
 <?php
 
+use Aws\MultiRegionClient;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,17 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('test', function () {
-    $client = new Aws\Ecs\EcsClient([
-        'version' => '2014-11-13',
-        'region' => 'us-west-2'
-    ]);
+Auth::routes();
 
-    $result = $client->describeClusters();
+Route::get('/', 'ClusterController@index');
 
-    dd($result);
-});
+Route::post('/services/{id}/power', 'ServiceController@power')->name('services.power');
+Route::post('/services/{id}/schedule', 'ServiceController@schedule')->name('services.schedule');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('clusters', 'ClusterController')->except('index');
+Route::resource('services', 'ServiceController')->only('show', 'store');

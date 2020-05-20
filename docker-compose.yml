@@ -1,12 +1,44 @@
-
 ---
 
 version: '3'
 services:
+#  app:
+#    image: laravel-www
+#    container_name: laravel-www
+#    build: .
+#    depends_on:
+#      - redis
+#      - mysql
+#    ports:
+#      - 8080:80
+#    volumes:
+#      - .:/var/www/html
+#    environment:
+#      APP_ENV: local
+#      CONTAINER_ROLE: app
+#      CACHE_DRIVER: redis
+#      SESSION_DRIVER: redis
+#      QUEUE_DRIVER: redis
+#      REDIS_HOST: redis
+
+#  scheduler:
+#    image: laravel-www
+#    container_name: laravel-scheduler
+#    depends_on:
+#      - app
+#    volumes:
+#      - .:/var/www/html
+#    environment:
+#      APP_ENV: local
+#      CONTAINER_ROLE: scheduler
+#      CACHE_DRIVER: redis
+#      SESSION_DRIVER: redis
+#      QUEUE_DRIVER: redis
+#      REDIS_HOST: redis
   mysql:
     image: mysql:5.7
     ports:
-    - "3306:3306"
+      - "3306:3306"
     environment:
       - MYSQL_USER=laravel
       - MYSQL_PASSWORD=secrets
