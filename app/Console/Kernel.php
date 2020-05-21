@@ -26,6 +26,8 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('ecs:start-scheduled')->weekdays()->at('7:00')->timezone('America/Chicago');
         $schedule->command('ecs:stop-scheduled')->weekdays()->at('19:00')->timezone('America/Chicago');
+
+        $schedule->command('ecs:import-services')->hourly();
     }
 
     /**
