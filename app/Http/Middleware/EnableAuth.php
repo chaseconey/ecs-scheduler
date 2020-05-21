@@ -16,6 +16,7 @@ class EnableAuth
     public function handle($request, Closure $next)
     {
         if (config('app.enable_auth') && auth()->guest()) {
+            \Log::debug("Auth enabled and not logged in, redirecting...");
             return redirect()->route('login');
         }
 

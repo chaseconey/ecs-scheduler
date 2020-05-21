@@ -2,20 +2,20 @@
 
 version: '3'
 services:
-#  app:
-#    image: laravel-www
-#    container_name: laravel-www
-#    build: .
-#    depends_on:
-#      - redis
-#      - mysql
-#    ports:
-#      - 8080:80
-#    volumes:
-#      - .:/var/www/html
-#    environment:
-#      APP_ENV: local
-#      CONTAINER_ROLE: app
+  app:
+    image: laravel-www
+    container_name: laravel-www
+    build: .
+    depends_on:
+      - redis
+      - mysql
+    ports:
+      - 8080:80
+    volumes:
+      - .:/var/www/html
+    environment:
+      APP_ENV: local
+      CONTAINER_ROLE: app
 #      CACHE_DRIVER: redis
 #      SESSION_DRIVER: redis
 #      QUEUE_DRIVER: redis
