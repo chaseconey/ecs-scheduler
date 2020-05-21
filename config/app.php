@@ -4,6 +4,8 @@ return [
 
     'configured_regions' => ['us-west-2', 'us-east-1'],
 
+    'enable_auth' => env('ENABLE_AUTH', false),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -167,6 +169,7 @@ return [
         /*
          * Package Service Providers...
          */
+        \SocialiteProviders\Manager\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -229,6 +232,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
     ],
 

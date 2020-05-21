@@ -14,12 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes();
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('auth/auth0', 'Auth\Auth0LoginController@redirectToProvider')->name('login');
+Route::get('auth/auth0/callback', 'Auth\Auth0LoginController@handleProviderCallback');
 
-Route::get('/', 'ClusterController@index');
+Route::group(['middleware' => 'conditional.auth'], function () {
+    Route::get('/', 'ClusterController@index');
 
-Route::post('/services/{id}/power', 'ServiceController@power')->name('services.power');
-Route::post('/services/{id}/schedule', 'ServiceController@schedule')->name('services.schedule');
+    Route::post('/services/{id}/power', 'ServiceController@power')->name('services.power');
+    Route::post('/services/{id}/schedule', 'ServiceController@schedule')->name('services.schedule');
 
-Route::resource('clusters', 'ClusterController')->except('index');
-Route::resource('services', 'ServiceController')->only('show', 'store');
+    Route::resource('clusters', 'ClusterController')->except('index');
+    Route::resource('services', 'ServiceController')->only('show', 'store');
+});
