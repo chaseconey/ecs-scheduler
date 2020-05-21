@@ -8,6 +8,7 @@ class HealthController extends Controller
 {
     public function index()
     {
+        config()->set('session.driver', 'array');
         return response('ok');
     }
 }
