@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('auth/auth0', 'Auth\Auth0LoginController@redirectToProvider')->name('login');
 Route::get('auth/auth0/callback', 'Auth\Auth0LoginController@handleProviderCallback');
+Route::get('health', 'HealthController@index');
 
 Route::group(['middleware' => 'conditional.auth'], function () {
     Route::get('/', 'ClusterController@index');
