@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+Route::post('logout', 'Auth\LogoutController@logout')->name('logout');
 Route::get('auth/auth0', 'Auth\Auth0LoginController@redirectToProvider')->name('login');
 Route::get('auth/auth0/callback', 'Auth\Auth0LoginController@handleProviderCallback');
 Route::get('health', 'HealthController@index');
