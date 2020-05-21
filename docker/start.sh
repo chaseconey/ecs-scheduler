@@ -12,7 +12,7 @@ fi
 
 if [ "$role" = "app" ]; then
 
-    php /var/www/html/artisan migrate
+    php /var/www/html/artisan migrate --force
 
     exec apache2-foreground
 
