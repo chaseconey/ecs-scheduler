@@ -23,7 +23,7 @@ class ServiceController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request, EcsService $service)
@@ -38,7 +38,7 @@ class ServiceController extends Controller
             ]);
         }
 
-        laraflash("Services have been imported for {$cluster->name}")->success();
+        laraflash("Services have been imported for {$cluster->name}.")->success();
 
         return redirect()->back();
     }
@@ -46,7 +46,7 @@ class ServiceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
@@ -68,10 +68,25 @@ class ServiceController extends Controller
         $service->scheduled = !$service->scheduled;
         $service->save();
 
-        laraflash("{$service->name}'s schedule toggled")->success();
+        laraflash("{$service->name}'s schedule toggled.")->success();
 
         return redirect()->back();
+    }
 
+    /**
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function hide($id)
+    {
+        $service = Service::findOrFail($id);
+
+        $service->hidden = true;
+        $service->save();
+
+        laraflash("{$service->name}'s now hidden.")->success();
+
+        return redirect()->route('clusters.show', [$service->cluster->id]);
     }
 
     public function power($id)

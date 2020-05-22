@@ -51,7 +51,7 @@ class ClusterController extends Controller
             }
         }
 
-        laraflash('Clusters have been successfully imported')->success();
+        laraflash('Clusters have been successfully imported.')->success();
 
         return redirect()->to('/');
     }
@@ -60,7 +60,7 @@ class ClusterController extends Controller
      * Display the specified resource.
      *
      * @param  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
     public function show($id)
     {
