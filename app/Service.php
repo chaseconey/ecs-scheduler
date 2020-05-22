@@ -31,4 +31,9 @@ class Service extends Model implements Auditable
     {
         return $this->belongsTo(Cluster::class);
     }
+
+    public function scopeVisible($query)
+    {
+        return $query->where('hidden', false);
+    }
 }

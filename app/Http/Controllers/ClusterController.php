@@ -35,7 +35,7 @@ class ClusterController extends Controller
     /**
      * Upsert all clusters for all configured regions
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
@@ -64,9 +64,14 @@ class ClusterController extends Controller
      */
     public function show($id)
     {
-        $cluster = Cluster::with('services')->findOrFail($id);
+        $services = Service::where('cluster_id', $id)
+            ->visible()
+            ->paginate(10);
 
-        return view('clusters.show', compact('cluster'));
+        return view('clusters.show', [
+            'cluster_id' => $id,
+            'services' => $services
+        ]);
     }
 
 }
