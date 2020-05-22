@@ -17,6 +17,7 @@
         "laravel/framework": "^7.0",
         "laravel/socialite": "^4.3",
         "laravel/tinker": "^2.0",
+        "owen-it/laravel-auditing": "^10.0",
         "socialiteproviders/auth0": "dev-master"
     },
     "require-dev": {

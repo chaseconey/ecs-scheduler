@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Auditable as AuditableTrait;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class Service extends Model
+class Service extends Model implements Auditable
 {
+    use AuditableTrait;
+
     protected $fillable = ['arn', 'cluster_id'];
 
     protected $casts = [
