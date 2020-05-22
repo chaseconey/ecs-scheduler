@@ -29,7 +29,9 @@
                     <button class="btn btn-outline-danger"><i class="fas fa-stop-circle"></i> Shutdown Service</button>
                 @endif
             </form>
-            <form action="{{ route('services.hide', $service->id) }}" method="post" class="d-inline">
+            <form action="{{ route('services.destroy', $service->id) }}" method="post" class="d-inline">
+                {{ method_field('DELETE') }}
+
                 {{ csrf_field() }}
                 <button class="btn btn-outline-danger"><i class="fas fa-eye-slash"></i> Hide Service</button>
             </form>

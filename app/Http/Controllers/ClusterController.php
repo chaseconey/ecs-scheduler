@@ -29,11 +29,9 @@ class ClusterController extends Controller
     public function index()
     {
         $clusters = Cluster::withCount([
-            'services as hidden_services_count' => function (Builder $query) {
-                $query->where('hidden', true);
-            },
-            'services as visible_services_count' => function (Builder $query) {
-                $query->where('hidden', false);
+            'services',
+            'services as deleted_services_count' => function (Builder $query) {
+                $query->onlyTrashed();
             }])->get();
 
         return view('clusters.index', compact('clusters'));
@@ -73,7 +71,6 @@ class ClusterController extends Controller
     {
         $services = Service::where('cluster_id', $id)
             ->with('cluster')
-            ->visible()
             ->paginate(10);
 
         return view('clusters.show', [

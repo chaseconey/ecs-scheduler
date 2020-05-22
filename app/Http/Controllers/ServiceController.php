@@ -24,6 +24,7 @@ class ServiceController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
+     * @param EcsService $service
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request, EcsService $service)
@@ -32,7 +33,7 @@ class ServiceController extends Controller
         $services = $service->listServices($cluster);
 
         foreach ($services as $service) {
-            Service::firstOrCreate([
+            Service::withTrashed()->firstOrCreate([
                 'arn' => $service,
                 'cluster_id' => $cluster->id
             ]);
@@ -77,13 +78,10 @@ class ServiceController extends Controller
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function hide($id)
+    public function destroy($id)
     {
-        $service = Service::findOrFail($id);
-
-        $service->hidden = true;
-        $service->scheduled = false;
-        $service->save();
+        $service = Service::find($id);
+        $service->delete();
 
         laraflash("{$service->name}'s now hidden.")->success();
 

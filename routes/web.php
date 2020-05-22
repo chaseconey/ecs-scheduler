@@ -24,8 +24,7 @@ Route::group(['middleware' => 'conditional.auth'], function () {
 
     Route::post('/services/{id}/power', 'ServiceController@power')->name('services.power');
     Route::post('/services/{id}/schedule', 'ServiceController@schedule')->name('services.schedule');
-    Route::post('/services/{id}/hide', 'ServiceController@hide')->name('services.hide');
 
     Route::resource('clusters', 'ClusterController')->except('index');
-    Route::resource('services', 'ServiceController')->only('show', 'store');
+    Route::resource('services', 'ServiceController')->only('show', 'store', 'destroy');
 });

@@ -3,12 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use OwenIt\Auditing\Auditable as AuditableTrait;
 use OwenIt\Auditing\Contracts\Auditable;
 
 class Service extends Model implements Auditable
 {
-    use AuditableTrait;
+    use AuditableTrait, SoftDeletes;
 
     protected $fillable = ['arn', 'cluster_id'];
 
@@ -30,10 +31,5 @@ class Service extends Model implements Auditable
     public function cluster()
     {
         return $this->belongsTo(Cluster::class);
-    }
-
-    public function scopeVisible($query)
-    {
-        return $query->where('hidden', false);
     }
 }
