@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Cluster;
 use App\Service;
 use App\Services\EcsService;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class ClusterController extends Controller
@@ -27,7 +28,13 @@ class ClusterController extends Controller
      */
     public function index()
     {
-        $clusters = Cluster::all();
+        $clusters = Cluster::withCount([
+            'services as hidden_services_count' => function (Builder $query) {
+                $query->where('hidden', true);
+            },
+            'services as visible_services_count' => function (Builder $query) {
+                $query->where('hidden', false);
+            }])->get();
 
         return view('clusters.index', compact('clusters'));
     }

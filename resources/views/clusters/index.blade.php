@@ -24,7 +24,7 @@
             <tr>
                 <td><a href="{{ route('clusters.show', $cluster->id) }}">{{ $cluster->name }}</a></td>
                 <td>{{ $cluster->region }}</td>
-                <td>{{ $cluster->services->count() }}</td>
+                <td>{{ $cluster->visible_services_count }} <span class="text-muted">({{ $cluster->hidden_services_count }} hidden)</span></td>
             </tr>
         @endforeach
         </tbody>
