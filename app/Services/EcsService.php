@@ -66,6 +66,11 @@ class EcsService
      */
     public function shutdownService(Service $service)
     {
+        // Set the desired count before we shut down for when we start again
+        $oldDesiredCount = $this->getServiceDesiredCount($service);
+        $service->desired_count = $oldDesiredCount;
+        $service->save();
+
         $result = $this->client->updateService([
             'service' => $service->name,
             'desiredCount' => 0,
@@ -85,7 +90,7 @@ class EcsService
     {
         $result = $this->client->updateService([
             'service' => $service->name,
-            'desiredCount' => 1,
+            'desiredCount' => $service->desired_count,
             'cluster' => $service->cluster->name
         ]);
 
