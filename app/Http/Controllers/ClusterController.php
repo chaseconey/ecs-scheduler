@@ -33,7 +33,7 @@ class ClusterController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Upsert all clusters for all configured regions
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
@@ -51,6 +51,7 @@ class ClusterController extends Controller
             }
         }
 
+        laraflash('Clusters have been successfully imported')->success();
 
         return redirect()->to('/');
     }
@@ -68,37 +69,4 @@ class ClusterController extends Controller
         return view('clusters.show', compact('cluster'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

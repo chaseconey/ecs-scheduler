@@ -38,6 +38,8 @@ class ServiceController extends Controller
             ]);
         }
 
+        laraflash("Services have been imported for {$cluster->name}")->success();
+
         return redirect()->back();
     }
 
@@ -66,6 +68,8 @@ class ServiceController extends Controller
         $service->scheduled = !$service->scheduled;
         $service->save();
 
+        laraflash("{$service->name}'s schedule toggled")->success();
+
         return redirect()->back();
 
     }
@@ -78,8 +82,10 @@ class ServiceController extends Controller
 
         if ($desiredCount === 0) {
             $this->service->startService($service);
+            laraflash("{$service->name} has been started - it may take a minute to complete.")->success();
         } else {
             $this->service->shutdownService($service);
+            laraflash("{$service->name} has been stopped - it may take a minute to complete.")->success();
         }
 
         return redirect()->back();

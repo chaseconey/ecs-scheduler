@@ -70,6 +70,7 @@
         </nav>
 
         <main class="py-4 container">
+            {!! laraflash()->render() !!}
             @yield('content')
         </main>
     </div>

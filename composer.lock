@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3c3524af4ef7766acb934d0a58330878",
+    "content-hash": "b48a89d19bfe0ef846c2a090a1ca9475",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -187,6 +187,58 @@
                 "math"
             ],
             "time": "2020-04-15T15:59:35+00:00"
+        },
+        {
+            "name": "coderello/laraflash",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/coderello/laraflash.git",
+                "reference": "a1cfcc08cfcf96afca6c17fa5456387695420f27"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/coderello/laraflash/zipball/a1cfcc08cfcf96afca6c17fa5456387695420f27",
+                "reference": "a1cfcc08cfcf96afca6c17fa5456387695420f27",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "laravel/framework": "5.8.*|^6.0|^7.0",
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.8|^4.0|^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Coderello\\Laraflash\\Providers\\LaraflashServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Coderello\\Laraflash\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Advanced flash messages for Laravel.",
+            "keywords": [
+                "advanced",
+                "flash",
+                "laraflash",
+                "laravel",
+                "messages"
+            ],
+            "time": "2020-03-03T11:10:02+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
