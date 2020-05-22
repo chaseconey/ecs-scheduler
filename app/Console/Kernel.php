@@ -24,8 +24,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('ecs:start-scheduled')->weekdays()->at('10:15:00')->timezone('America/Chicago');
-        $schedule->command('ecs:stop-scheduled')->weekdays()->at('19:00')->timezone('America/Chicago');
+        $schedule->command('ecs:start-scheduled')->weekdays()->at('7:00')->timezone('America/Chicago');
+        $schedule->command('ecs:stop-scheduled')->weekdays()->at('22:35')->timezone('America/Chicago');
 
         $schedule->command('ecs:import-services')->hourly();
     }
