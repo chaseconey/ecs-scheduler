@@ -65,6 +65,7 @@ class ClusterController extends Controller
     public function show($id)
     {
         $services = Service::where('cluster_id', $id)
+            ->with('cluster')
             ->visible()
             ->paginate(10);
 
