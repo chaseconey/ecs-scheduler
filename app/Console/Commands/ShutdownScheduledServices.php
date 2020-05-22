@@ -46,10 +46,10 @@ class ShutdownScheduledServices extends Command
     {
         $services = Service::where('scheduled', 1)->get();
 
-        $this->info(count($services) . ' services scheduled to shutdown');
+        \Log::info(count($services) . ' services scheduled to shutdown');
 
         foreach ($services as $service) {
-            $this->info("Shutting down {$service->name}");
+            \Log::info("Shutting down {$service->name}");
             $this->service->shutdownService($service);
         }
 
