@@ -82,6 +82,7 @@ class ServiceController extends Controller
         $service = Service::findOrFail($id);
 
         $service->hidden = true;
+        $service->scheduled = false;
         $service->save();
 
         laraflash("{$service->name}'s now hidden.")->success();
