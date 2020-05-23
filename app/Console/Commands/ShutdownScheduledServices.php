@@ -5,6 +5,8 @@ namespace App\Console\Commands;
 use App\Service;
 use App\Services\EcsService;
 use Illuminate\Console\Command;
+use App\Notifications\ServicesShutdown;
+use Illuminate\Support\Facades\Notification;
 
 class ShutdownScheduledServices extends Command
 {
@@ -46,11 +48,13 @@ class ShutdownScheduledServices extends Command
     {
         $services = Service::where('scheduled', 1)->get();
 
-        \Log::info(count($services) . ' services scheduled to shutdown');
-
         foreach ($services as $service) {
-            \Log::info("Shutting down {$service->name}");
             $this->service->shutdownService($service);
+        }
+
+        if ($services->count() > 0) {
+            Notification::route('slack', config('services.slack.webhook_url'))
+                ->notify(new ServicesShutdown($services));
         }
 
     }

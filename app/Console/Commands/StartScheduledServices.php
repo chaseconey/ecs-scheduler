@@ -5,6 +5,8 @@ namespace App\Console\Commands;
 use App\Service;
 use App\Services\EcsService;
 use Illuminate\Console\Command;
+use App\Notifications\ServicesStarted;
+use Illuminate\Support\Facades\Notification;
 
 class StartScheduledServices extends Command
 {
@@ -46,11 +48,13 @@ class StartScheduledServices extends Command
     {
         $services = Service::where('scheduled', 1)->get();
 
-        $this->info(count($services) . ' services scheduled to start');
-
         foreach ($services as $service) {
-            $this->info("Starting up {$service->name}");
             $this->service->startService($service);
+        }
+
+        if ($services->count() > 0) {
+            Notification::route('slack', config('services.slack.webhook_url'))
+                ->notify(new ServicesStarted($services));
         }
     }
 }

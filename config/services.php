@@ -37,4 +37,10 @@ return [
         'base_url' => env('AUTH0_DOMAIN')
     ],
 
+    'slack' => [
+        'enabled' => env('SLACK_NOTIFICATIONS_ENABLED', false),
+        'channel' => env('SLACK_CHANNEL'),
+        'webhook_url' => env('SLACK_WEBHOOK_URL')
+    ]
+
 ];
