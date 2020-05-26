@@ -6,6 +6,10 @@ return [
 
     'enable_auth' => env('ENABLE_AUTH', false),
 
+    'scheduler_start_time' => env('SCHEDULER_START_TIME', '7:00'),
+    'scheduler_shutdown_time' => env('SCHEDULER_SHUTDOWN_TIME', '19:00'),
+    'scheduler_timezone' => env('SCHEDULER_TIMEZONE', 'UTC'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

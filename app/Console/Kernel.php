@@ -24,8 +24,13 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('ecs:start-scheduled')->weekdays()->at('7:00')->timezone('America/Chicago');
-        $schedule->command('ecs:shutdown-scheduled')->weekdays()->at('19:00')->timezone('America/Chicago');
+        $schedule->command('ecs:start-scheduled')
+            ->weekdays()->at(config('app.scheduler_start_time'))
+            ->timezone(config('app.scheduler_timezone'));
+
+        $schedule->command('ecs:shutdown-scheduled')
+            ->weekdays()->at(config('app.scheduler_shutdown_time'))
+            ->timezone(config('app.scheduler_timezone'));
 
         $schedule->command('ecs:import-services')->hourly();
     }
