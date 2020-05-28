@@ -73,8 +73,10 @@ class ClusterController extends Controller
             ->with('cluster')
             ->paginate(10);
 
+        $cluster = Cluster::findOrFail($id);
+
         return view('clusters.show', [
-            'cluster_id' => $id,
+            'cluster' => $cluster,
             'services' => $services
         ]);
     }

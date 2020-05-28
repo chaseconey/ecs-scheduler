@@ -2,11 +2,13 @@
 
 @section('content')
 
-    <div class="row">
-        <div class="col">
-            <a href="{{ route('clusters.show', $service->cluster->id) }}">Back to Cluster</a>
-        </div>
-    </div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-light">
+            <li class="breadcrumb-item"><a href="{{ route('clusters.index') }}">Clusters</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('clusters.show', $service->cluster->id) }}">{{ $service->cluster->name }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ $service->name }}</li>
+        </ol>
+    </nav>
 
     <div class="d-flex justify-content-between">
         <div>

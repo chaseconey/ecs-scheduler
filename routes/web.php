@@ -20,7 +20,7 @@ Route::get('auth/auth0/callback', 'Auth\Auth0LoginController@handleProviderCallb
 Route::get('health', 'HealthController@index');
 
 Route::group(['middleware' => 'conditional.auth'], function () {
-    Route::get('/', 'ClusterController@index');
+    Route::get('/', 'ClusterController@index')->name('clusters.index');
 
     Route::post('/services/{id}/power', 'ServiceController@power')->name('services.power');
     Route::post('/services/{id}/schedule', 'ServiceController@schedule')->name('services.schedule');

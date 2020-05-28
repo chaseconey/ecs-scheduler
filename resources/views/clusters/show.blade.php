@@ -2,11 +2,17 @@
 
 @section('content')
 
-    <div class="row text-right">
-        <div class="col">
+    <div class="d-flex justify-content-between">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-light">
+                <li class="breadcrumb-item"><a href="{{ route('clusters.index') }}">Clusters</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $cluster->name }}</li>
+            </ol>
+        </nav>
+        <div>
             <form action="{{ route('services.store') }}" method="post">
                 {{ csrf_field() }}
-                <input type="hidden" name="cluster_id" value="{{ $cluster_id }}">
+                <input type="hidden" name="cluster_id" value="{{ $cluster->id }}">
                 <button class="btn btn-outline-secondary"><i class="fas fa-sync-alt"></i> Refresh</button>
             </form>
         </div>
