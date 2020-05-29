@@ -32,7 +32,9 @@ class ClusterController extends Controller
             'services',
             'services as deleted_services_count' => function (Builder $query) {
                 $query->onlyTrashed();
-            }])->get();
+            }])
+            ->orderBy('services_count', 'desc')
+            ->get();
 
         return view('clusters.index', compact('clusters'));
     }
@@ -72,6 +74,7 @@ class ClusterController extends Controller
         $services = Service::where('cluster_id', $id)
             ->with('cluster')
             ->withTrashed()
+            ->orderBy('arn')
             ->paginate(10);
 
         $cluster = Cluster::findOrFail($id);
