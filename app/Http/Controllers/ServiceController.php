@@ -81,6 +81,9 @@ class ServiceController extends Controller
     public function destroy($id)
     {
         $service = Service::find($id);
+        $service->scheduled = false;
+        $service->save();
+
         $service->delete();
 
         laraflash("{$service->name}'s now hidden.")->success();
