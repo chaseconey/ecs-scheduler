@@ -71,6 +71,7 @@ class ClusterController extends Controller
     {
         $services = Service::where('cluster_id', $id)
             ->with('cluster')
+            ->withTrashed()
             ->paginate(10);
 
         $cluster = Cluster::findOrFail($id);

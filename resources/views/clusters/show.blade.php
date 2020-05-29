@@ -30,7 +30,13 @@
         <tbody>
             @foreach($services as $service)
             <tr>
-                <td><a href="{{ route('services.show', $service->id) }}">{{ $service->name }}</a></td>
+                <td>
+                    @if($service->trashed())
+                        <span class="text-muted">{{ $service->name }} (hidden)</span>
+                    @else
+                        <a href="{{ route('services.show', $service->id) }}">{{ $service->name }}</a>
+                    @endif
+                </td>
                 <td>{{ $service->cluster->name }}</td>
                 <td>{!! $service->scheduled ? '<i class="fas text-success fa-check-circle"></i>' : '' !!}</td>
             </tr>
