@@ -60,8 +60,13 @@
                 <tr>
                     <td>Running Containers</td>
                     <td>
-                        <span class="badge badge-warning">{{ $details->get('pendingCount') }}</span>
                         <span class="badge badge-primary">{{ $details->get('runningCount') }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Pending Containers</td>
+                    <td>
+                        <span class="badge badge-warning">{{ $details->get('pendingCount') }}</span>
                     </td>
                 </tr>
             </table>
