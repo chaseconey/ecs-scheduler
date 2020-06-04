@@ -1,6 +1,5 @@
 <?php
 
-use Aws\MultiRegionClient;
 use Illuminate\Support\Facades\Route;
 
 /*

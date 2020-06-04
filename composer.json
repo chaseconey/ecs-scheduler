@@ -19,7 +19,8 @@
         "laravel/socialite": "^4.3",
         "laravel/tinker": "^2.0",
         "owen-it/laravel-auditing": "^10.0",
-        "socialiteproviders/auth0": "dev-master"
+        "socialiteproviders/auth0": "dev-master",
+        "ext-json": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.3",

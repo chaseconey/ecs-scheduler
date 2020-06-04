@@ -30,13 +30,13 @@ class ImportServices extends Command
     /**
      * Create a new command instance.
      *
-     * @param EcsService $service
+     * @param EcsService $client
      */
-    public function __construct(EcsService $service)
+    public function __construct(EcsService $client)
     {
         parent::__construct();
 
-        $this->service = $service;
+        $this->service = $client;
     }
 
     /**
