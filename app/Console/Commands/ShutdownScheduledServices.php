@@ -51,7 +51,6 @@ class ShutdownScheduledServices extends Command
 
         foreach ($services as $service) {
             try {
-
                 $this->client->shutdownService($service);
             } catch (EcsException $e) {
                 $this->info("Exception when shutting down service: " . json_encode($e->getCommand()->toArray()));

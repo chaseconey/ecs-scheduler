@@ -79,7 +79,7 @@
             <h2>Events</h2>
             <div class="bg-dark shadow p-2" style="height: 375px; overflow: scroll">
                 <code>
-                    @foreach($details->get('events') as $event)
+                    @foreach($details->get('events', []) as $event)
                         <b class="text-muted">[{{ Carbon\Carbon::parse($event['createdAt'])->diffForHumans() }}]</b>
                         <span class="text-white">{{ $event['message'] }}</span> <br>
                     @endforeach

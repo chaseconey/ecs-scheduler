@@ -48,6 +48,12 @@ class EcsService
             'services' => [$service->arn],
         ]);
 
+        // Service not found
+        // TODO: handle in some way?
+        if (!$result['services']) {
+            return collect();
+        }
+
         return collect($result['services'][0]);
     }
 
@@ -55,7 +61,7 @@ class EcsService
     {
         $service = $this->describeService($service);
 
-        return $service->get('desiredCount');
+        return $service->get('desiredCount', 0);
     }
 
     /**
