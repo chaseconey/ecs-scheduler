@@ -10,6 +10,12 @@
         </ol>
     </nav>
 
+    @if($details->isEmpty())
+    <div class="alert alert-warning" role="alert">
+        It looks like this service might not exist anymore. To keep things clean, hide unused services below.
+    </div>
+    @endif
+
     <div class="d-flex justify-content-between">
         <div>
             <h1>{{ $service->name }}</h1>
